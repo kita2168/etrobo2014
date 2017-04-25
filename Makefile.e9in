@@ -1,0 +1,39 @@
+# ◆EAST機用◆
+# ◆IN側◆
+CFLAGS=-DSTEC_EAST -DMAKE_INSIDE
+CPPFLAGS=-DSTEC_EAST -DMAKE_INSIDE
+# ◆OUT側◆
+#CFLAGS=-DSTEC_EAST -DMAKE_OUTSIDE
+#CPPFLAGS=-DSTEC_EAST -DMAKE_OUTSIDE
+
+# nxtOSEKルートディレクトリ
+NXTOSEK_ROOT = ../../../nxtOSEK
+
+# ターゲット実行形式ファイル名
+TARGET = steceast_in
+#TARGET = steceast_out
+
+# インクルードパス
+USER_INC_PATH= $(NXTOSEK_ROOT)/ecrobot/nxtway_gs_balancer
+
+# ライブラリ
+USER_LIB = nxtway_gs_balancer
+
+# Cソースファイル
+TARGET_SOURCES = balancer_param.c BtDatalog.c SpeedoMeter.c AngleMeter.c SensorIn.c Control.c Calc.c LineTraceControl.c LineTraceInsideBasicSmc.c LineTraceInsideBonusSmc.c LineTrace.c FigureLStage.c LookUpGateStage.c main.c ReturnToLine.c BalanceToTail.c TailToBalance.c
+#TARGET_SOURCES = balancer_param.c BtDatalog.c SpeedoMeter.c AngleMeter.c SensorIn.c Control.c Calc.c LineTraceControl.c LineTraceOutsideBasicSmc.c LineTraceOutsideBonusSmc.c LineTrace.c FigureLStage.c LookUpGateStage.c main.c ReturnToLine.c BalanceToTail.c TailToBalance.c
+
+# BluetoothのID名(NeXTTool.exe -listbricks参照)
+BLUETOOTH_ID = BTH::ET94::00:16:53:16:EC:28::7
+
+#ビルドモード
+BUILD_MODE=RXE_ONLY
+#BUILD_MODE=ROM_ONLY
+
+# TOPPERS/ATK(OSEK)設定ファイル
+TOPPERS_OSEK_OIL_SOURCE = sample.oil
+
+# 下記のマクロは変更しないでください
+O_PATH ?= build
+
+include $(NXTOSEK_ROOT)/ecrobot/ecrobot.mak

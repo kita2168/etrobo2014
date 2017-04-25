@@ -1,0 +1,33 @@
+# ◆WEST機用◆
+# ◆OUT側◆
+CFLAGS=
+CPPFLAGS=
+
+# nxtOSEKルートディレクトリ
+NXTOSEK_ROOT = ../../../nxtOSEK
+
+# ターゲット実行形式ファイル名
+TARGET = stecseibu_out
+
+# インクルードパス
+USER_INC_PATH= $(NXTOSEK_ROOT)/ecrobot/nxtway_gs_balancer
+
+# ライブラリ
+USER_LIB = nxtway_gs_balancer
+
+# Cソースファイル
+TARGET_SOURCES = balancer_param.c SpeedoMeter.c AngleMeter.c SensorIn.c Control.c Calc.c LineTraceControl.c LineTraceOutsideBasicSmc.c LineTraceTestSmc.c LineTrace.c main.c ReturnToLine.c BalanceToTail.c TailToBalance.c LineTraceOutsideBonusSmc.c BtDatalog.c LookUpGateStage.c
+
+# BluetoothのID名(NeXTTool.exe -listbricks参照)
+BLUETOOTH_ID = BTH::ET76::00:16:53:13:E2:66::4
+
+#ビルドモード
+BUILD_MODE=RXE_ONLY
+
+# TOPPERS/ATK(OSEK)設定ファイル
+TOPPERS_OSEK_OIL_SOURCE = sample.oil
+
+# 下記のマクロは変更しないでください
+O_PATH ?= build
+
+include $(NXTOSEK_ROOT)/ecrobot/ecrobot.mak
